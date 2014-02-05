@@ -43,4 +43,6 @@ if ($b !== $c) {
 	echo "$b is not identical to $c\n";
 }
 
+echo "Hello, my name is Ben";
+
 ?>
