@@ -8,12 +8,18 @@
 
 	$ending_number = fgets(STDIN);
 
-	fwrite(STDOUT, "Would you like to count by 1, 2, 4, 6, 8, or 10?\n");
+	fwrite(STDOUT, "What number would you like to count by? 2, 4, 5, 6, 19, your favorite number, you choose.\n");
 
 	$increment = fgets(STDIN);
 
-	for ($i = $starting_number; $i <= $ending_number; $i += $increment) {
+	if ($increment > 0) {
+		for ($i = $starting_number; $i <= $ending_number; $i += $increment) {
 		fwrite(STDOUT, "/$i is equal to $i\n");
+		}
+	} else {
+		for ($i = $starting_number; $i <= $ending_number; $i += 1) {
+		fwrite(STDOUT, "/$i is equal to $i\n");
+		}
 	}
 
 ?>
