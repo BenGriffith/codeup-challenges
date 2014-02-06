@@ -2,7 +2,7 @@
 
 	// Random number declared
 
-	$number = mt_rand(1, 100);
+	$number = mt_rand($argv[1], $argv[2]);
 
 	// Program prompts the user to guess the random number
 
