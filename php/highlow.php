@@ -2,7 +2,7 @@
 
 	// Random number declared
 
-	$number = rand(1, 100);
+	$number = mt_rand(1, 100);
 
 	// Program prompts the user to guess the random number
 
@@ -13,7 +13,12 @@
 
 	$guess = fgets(STDIN);
 
+	$number_of_guesses = 1;
+
 	while ($guess != $number) {
+		
+		$number_of_guesses+=1;
+
 		if ($guess < $number) {
 			fwrite(STDOUT, "Higher\n");
 		} elseif ($guess > $number) {
@@ -21,6 +26,7 @@
 		}
 
 		fwrite(STDOUT, "Guess? ");
+		
 		$guess = fgets(STDIN);
 	}
 
@@ -28,7 +34,8 @@
 		fwrite(STDOUT, "Good guess!\n");
 	}
 
-exit(0);
+	fwrite(STDOUT, "It took you $number_of_guesses attempts to guess correctly!\n");
 
+exit(0);
 
 ?>
