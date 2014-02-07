@@ -1,41 +1,28 @@
 <?php
 
-	// Random number declared
+	// Game picks a random number
 
-	$number = mt_rand($argv[1], $argv[2]);
+	$randomNumber = rand(1, 100);
+	
+	// Prompts user to guess the number
 
-	// Program prompts the user to guess the random number
+	fwrite(STDOUT, "Please guess a number\n");
 
-	fwrite(STDOUT, "Guess the number! ");
+	$userGuess = fgets(STDIN);
 
+	// If user guess is less than random number, output "HIGHER". If
+	// user guess is greater than random number, output "LOWER". If 
+	// user guess is equal to random number, output is "GOOD GUESS!"
 
-	// Program gets input from the user
-
-	$guess = fgets(STDIN);
-
-	$number_of_guesses = 1;
-
-	while ($guess != $number) {
-		
-		$number_of_guesses+=1;
-
-		if ($guess < $number) {
-			fwrite(STDOUT, "Higher\n");
-		} elseif ($guess > $number) {
-			fwrite(STDOUT, "Lower\n");
+	while ($userGuess != $randomNumber) {
+			if ($userGuess < $randomNumber) {
+			echo "Please guess HIGHER!\n";
+		} elseif ($userGuess > $randomNumber) {
+			echo "Please guess LOWER!\n";
 		}
 
-		fwrite(STDOUT, "Guess? ");
-		
-		$guess = fgets(STDIN);
+		$userGuess = fgets(STDIN);
 	}
 
-	if ($guess = $number) {
-		fwrite(STDOUT, "Good guess!\n");
-	}
-
-	fwrite(STDOUT, "It took you $number_of_guesses attempts to guess correctly!\n");
-
-exit(0);
-
+	fwrite(STDOUT, "Congratulations! You guessed the correct number!\n");
 ?>
