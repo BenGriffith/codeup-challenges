@@ -2,7 +2,7 @@
 
 	// Game picks a random number
 
-	$randomNumber = rand(1, 100);
+	$randomNumber = mt_rand(1, 100);
 	
 	// Prompts user to guess the number
 
