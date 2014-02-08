@@ -10,14 +10,29 @@
 	fwrite(STDOUT, "Please choose an ending number\n");
 	$ending_number = trim(fgets(STDIN));
 
+	// If variables, $starting_number and $ending_number, are not numbers the an error message
+	// is returned and the program exits
+
+	if (!(is_numeric($starting_number)) || !(is_numeric($ending_number))) {
+		fwrite(STDOUT, "Only numbers are accepted for starting and ending numbers\n");
+		exit(0);
+	} elseif ($starting_number > $ending_number) {
+		fwrite(STDOUT, "Make sure your starting number is less than your ending number\n");
+		exit(0);
+	}
+
 	// Prompt user to select an increment
 
 	fwrite(STDOUT, "Please choose a numerical increment\n");
 	$increment = trim(fgets(STDIN));
 
+	// If increment is not a number an error message is returned and the program exits
 	// If user does not input a value for increment, default to a value of 1
 
-	if (intval($increment)) {
+	if (!(is_numeric($increment))) {
+		fwrite(STDOUT, "Only numbers are accepted for an increment\n");
+		exit(0);
+	} elseif (intval($increment)) {
 		$increment;
 	} else {
 		$increment = 1;
@@ -28,18 +43,5 @@
 	for ($i = $starting_number; $i <= $ending_number; $i += $increment) {
 		echo "$i\n";
 	}
-
-	// Give an error message if passed arguments are not numeric
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
