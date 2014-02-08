@@ -1,5 +1,25 @@
 <?php
 
+	// Setting the minimum and maximum values from arguments passed via CLI
+
+	$min = $argv[1];
+	$max = $argv[2];
+
+	// If argument count is not equal to 3 or $min or $max are not numerals, the user
+	// cannot continue
+
+	if ($argc != 3 || !(is_numeric($min)) || !(is_numeric($max))) {
+		echo "Ooops! Let's try input again!\n";
+		exit(0);
+		}
+
+	// If $min is greater than $max the user cannot continue
+
+	if ($min > $max) {
+		echo "Ooops! Your first input should be less than your second input!\n";
+		exit(0);
+	}
+
 	// Game picks a random number
 
 	$randomNumber = mt_rand(1, 100);
