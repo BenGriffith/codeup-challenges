@@ -35,13 +35,15 @@
 			unset($items[$key]);
 		}
 
+		// Exit when input is (Q)uit
+		if ($input == 'Q' || $input == 'q') {
+			// Say Goodbye!
+			echo "Goodbye!\n";
+			// Exit with 0 errors
+			exit(0);
+		}
+
 	// Exit when input is (Q)uit
 	} while ($input != 'Q' || $input != 'q');
-
-	// Say Goodbye!
-	echo "Goodbye!\n";
-
-	// Exit with 0 errors
-	exit(0);
 
 ?>
