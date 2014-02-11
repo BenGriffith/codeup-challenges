@@ -39,7 +39,7 @@
 		if (is_numeric($a) && is_numeric($b)) {
 			return $a / $b;
 			if ($b == 0) {
-				error_message($a, $b);
+				return FALSE;
 			}
 		}
 	}
@@ -58,13 +58,9 @@
  	$addition = add(3, 4);
 	$subtraction = subtract(10, 2);
 	$multiplication = multiply(10, 10);
-	$division = divide(10, 5);
+	$division = divide(10, 0);
 	$mod = modulus(10, 10);
 
-	echo $addition . "\n";
-	echo $subtraction . "\n";
-	echo $multiplication . "\n";
 	echo $division . "\n";
-	echo $mod . "\n";
 
 ?>
