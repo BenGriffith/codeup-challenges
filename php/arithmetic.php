@@ -58,7 +58,7 @@
  	$addition = add(3, 4);
 	$subtraction = subtract(10, 2);
 	$multiplication = multiply(10, 10);
-	$division = divide(10, 0);
+	$division = divide(10, 5);
 	$mod = modulus(10, 10);
 
 	echo $addition . "\n";
