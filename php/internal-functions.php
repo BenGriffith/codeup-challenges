@@ -37,7 +37,13 @@
 
 	// TEST: if var $something is set, display '$something is SET'
 
+	function something_set($a) {
+		if (isset($a)) {
+			return "\$something is SET" . PHP_EOL;
+		}
+	}
 
+	echo something_set($something);
 
 	// Serialize the array $array, and output the results
 
