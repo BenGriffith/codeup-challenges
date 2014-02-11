@@ -1,6 +1,6 @@
 <?php
 
-	$nothing = '';
+	$nothing = NULL;
 	$something = '';
 	$array = array(1, 2, 3);
 
@@ -27,7 +27,13 @@
 
 	// TEST: If var $nothing is empty, display 'nothing is EMPTY'
 
+	function nothing_empty($a) {
+		if (empty($a)) {
+			return "nothing is EMPTY" . PHP_EOL;
+		}
+	}
 
+	echo nothing_empty($nothing);
 
 	// TEST: if var $something is set, display '$something is SET'
 
