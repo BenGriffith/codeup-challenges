@@ -1,16 +1,20 @@
 <?php
 
+	function error($a, $b) {
+		echo "ERROR: Arguments must be numbers and greater than 0 instead of {$a} or {$b}\n";
+	}
+
 	function add($a, $b) {
 		// Adding $a to $b
 		if (is_numeric($a) && is_numeric($b)) {
 			echo $a + $b;
 			echo "\n";
 		} else {
-			echo "ERROR: Both arguments must be numbers\n";
+			error($a, $b);
 		}
 	}
 
-	add(3, 'test');
+ 	add('test', 4);
 
 	function subtract($a, $b) {
 		// Subtracting $b from $a
@@ -18,11 +22,11 @@
 			echo $a - $b;
 			echo "\n";
 		} else {
-			echo "ERROR: Both arguments must be numbers\n";
+			error($a, $b); 
 		}
 	}
 
-	subtract(10, true);
+	subtract(10, 2);
 
 	function multiply($a, $b) {
 		// Multiplying $a and $b
@@ -30,11 +34,11 @@
 			echo $a * $b;
 			echo "\n";
 		} else {
-			echo "ERROR: Both arguments must be numbers\n";
+			error($a, $b);
 		}
 	}
 
-	multiply(array(5, 5, 'test'), 10);
+	multiply(10, 10);
 
 	function divide($a, $b) {
 		// Dividing $a by $b
@@ -42,11 +46,15 @@
 			echo $a / $b;
 			echo "\n";
 		} else {
-			echo "ERROR: Both arguments must be numbers\n";
+			error($a, $b);
+		}
+
+		if ($b == 0) {
+			error($a, $b);
 		}
 	}
 
-	divide('test', 4);
+	divide(10, 10);
 
 	function modulus($a, $b) {
 		// Modulus of $a and $b
@@ -56,10 +64,10 @@
 			echo $b % 2;
 			echo "\n";
 		} else {
-			echo "ERROR: Both arguments must be numbers\n";
+			error($a, $b);
 		}
 	}
 
-	modulus('test', 20);
+	modulus(10, 10);
 
 ?>
