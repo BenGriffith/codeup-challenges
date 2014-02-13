@@ -21,7 +21,7 @@
 	// Get STDIN, strip whitespace and newlines,
 	// and convert to uppercase if $upper is true
 	function get_input($upper = FALSE) {
-		if ($upper) {
+		if ($upper == TRUE) {
 			// Return filtered STDIN input
 			return strtoupper(trim(fgets(STDIN)));
 		} else {
@@ -29,12 +29,18 @@
 		}
 	}
 
-	// Add a (S)ort option to your menu. When it is chosen, it should
-	// call a function called sort_menu()
-	function sort_menu($input) {
-		{
-
-		}
+	// sort_menu function sorts $items array
+	function sort_menu($user_sort, $items) {
+		if ($user_sort == 'A') {
+			asort($items);
+		} elseif ($user_sort == 'Z') {
+			arsort($items);
+		} elseif ($user_sort == 'O') {
+			ksort($items);
+		} elseif ($user_sort == 'R') {
+			krsort($items);
+		} 
+		return $items;
 	}
 
 	// The loop
@@ -52,13 +58,18 @@
 
 		// Check for actionable input
 		if ($input == 'N') {
+
 			// Ask for entry
 			echo 'Enter item: ';
+
 			// Add entry to list array
 			$items[] = get_input();
+
 		} elseif ($input == 'R') {
+
 			// Remove which item?
 			echo 'Enter the item number to remove: ';
+
 			// Get array key
 			$key = get_input();
 
@@ -67,9 +78,16 @@
 
 			// Remove from array
 			unset($items[$key]);
+
 		} elseif ($input == 'S') {
-			// Call sort_menu() function
-			sort_menu();
+			// Ask user to select an option
+			echo 'How would you like to sort your tasks? (A)-Z, (Z)-A, (O)rder entered, (R)everse order entered? ';
+			
+			// User inputs selection
+			$user_sort = get_input(TRUE);
+
+			// Call sort_menu() function ordering the TODO list 
+			$items = sort_menu($user_sort, $items);
 		}
 
 	// Exit when input is (Q)uit
