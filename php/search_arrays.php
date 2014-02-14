@@ -19,6 +19,22 @@
 	}
 
 	// calling function array_value
-	echo array_value($tina, $names);
-	echo array_value($bob, $names);
+	   echo array_value($tina, $names);
+	   echo array_value($bob, $names);
+
+	// a function that compares 2 arrays and returns the number of
+	// values in common between the arrays
+	function compare($input, $compare) {
+		// setting $count equal to zero to server as counter
+		$count = 0;
+		for ($i = 0; $i < count($input); $i++) {
+			if (in_array($input[$i], $compare)) {
+				$count++;
+			}
+		}
+		return $count . PHP_EOL;
+	}
+
+	echo compare($names, $compare);
+	
 ?>
