@@ -70,10 +70,13 @@
 			$location = get_input(TRUE);
 
 			if ($location == 'B') {
+				// add item to beginning of $items array
 				array_unshift($items, $index);
 			} elseif ($location == 'E') {
+				// add item to end of $items array
 				array_push($items, $index);
 			} else {
+				// default is to add item to beginnig of $items array
 				array_push($items, $index);
 			}
 
@@ -100,6 +103,14 @@
 
 			// Call sort_menu() function ordering the TODO list 
 			$items = sort_menu($user_sort, $items);
+
+		} elseif ($input == 'F') {
+			// remove item from beginning of $items array
+			array_shift($items);
+
+		} elseif ($input == 'L') {
+			// remove item from end of $items array
+			array_pop($items);
 		}
 
 	// Exit when input is (Q)uit
