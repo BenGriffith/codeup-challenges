@@ -44,7 +44,6 @@
 	}
 
 	// The loop
-	
 	do {
 		// Echo the list produced by the function
 		echo list_items($items);
@@ -62,8 +61,21 @@
 			// Ask for entry
 			echo 'Enter item: ';
 
-			// Add entry to list array
-			$items[] = get_input();
+			// Add entry to $index
+			$index = get_input();
+
+			// Ask user if they want to add item to the beginning
+			// or end of the list
+			echo 'Would you like to add this item to the (B)eginning or (E)nd of the list? ';
+			$location = get_input(TRUE);
+
+			if ($location == 'B') {
+				array_unshift($items, $index);
+			} elseif ($location == 'E') {
+				array_push($items, $index);
+			} else {
+				array_push($items, $index);
+			}
 
 		} elseif ($input == 'R') {
 
