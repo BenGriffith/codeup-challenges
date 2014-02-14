@@ -1,8 +1,10 @@
 <?php
 
-	// list of physicists
-	$physicists_array = ['Gordan Freeman', 'Samantha Carter',
-	'Sheldon Cooper', 'Quinn Mallory', 'Bruce Banner', 'Tony Stark'];
+	// list of famous peeps
+	$physicists_string = 'Gordon Freeman, Samantha Carter, Sheldon Cooper, Quinn Mallory, Bruce Banner, Tony Stark';
+
+	// changing $physicists_string into an array
+	$physicists_array = explode(', ', $physicists_string);
 
 	// removing last item in $physicists_array
 	array_pop($physicists_array);
