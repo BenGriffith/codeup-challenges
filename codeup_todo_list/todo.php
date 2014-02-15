@@ -49,7 +49,7 @@
 		echo list_items($items);
 
 		// Show the menu options
-		echo '(N)ew item, (R)emove item, (S)ort item, (Q)uit : ';
+		echo '(N)ew item, (R)emove item, (S)ort item, (O)pen item, (Q)uit : ';
 
 		// Get the input from the user
 		// Use trim() to remove whitespace and newlines
@@ -103,6 +103,24 @@
 
 			// Call sort_menu() function ordering the TODO list 
 			$items = sort_menu($user_sort, $items);
+
+		} elseif ($input == 'O') {
+			// Asking user to enter file path
+			echo 'Please enter path to the file you would like to have opened: ';
+
+			// User inputs file path
+			$user_file_path = get_input();
+
+			// File path to todo_list.txt
+			$filename = 'data/todo_list.txt';
+
+			// Load todo_list.txt to screen
+			if ($user_file_path == $filename) {
+				$handle = fopen($filename, 'r');
+				$contents = fread($handle, filesize($filename));
+				echo $contents . "\n";
+			}
+
 
 		} elseif ($input == 'F') {
 			// remove item from beginning of $items array
