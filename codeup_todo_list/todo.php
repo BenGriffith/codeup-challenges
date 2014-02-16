@@ -8,7 +8,7 @@
 		$index = '';
 		// Return string of list items separated by newlines.
 		// Should be listed [KEY] Value like this:
-		// [1] TODO item 1
+		// [1] TODO item 1 
 		// [2] TODO item 2 - blah
 		// DO NOT USE ECHO, USE RETURN
 		foreach ($list as $key => $item) {
@@ -43,6 +43,15 @@
 		return $items;
 	}
 
+	// Add each line of the todo_list to the current TODO list
+	function reads_the_file($filename) {		
+			// Load todo_list.txt to screen
+			$handle = fopen($filename, 'r');
+			$contents = fread($handle, filesize($filename));
+			fclose($handle);
+			return explode("\n", $contents);
+	}
+	
 	// The loop
 	do {
 		// Echo the list produced by the function
@@ -108,19 +117,14 @@
 			// Asking user to enter file path
 			echo 'Please enter path to the file you would like to have opened: ';
 
-			// User inputs file path
-			$user_file_path = get_input();
+			// User input stored in variable
+			$filename = get_input();
 
-			// File path to todo_list.txt
-			$filename = 'data/todo_list.txt';
+			// Call the reads_the_file function
+			$open_file = reads_the_file($filename);
 
-			// Load todo_list.txt to screen
-			if ($user_file_path == $filename) {
-				$handle = fopen($filename, 'r');
-				$contents = fread($handle, filesize($filename));
-				echo $contents . "\n";
-			}
-
+			// merge $contents_array with $items array
+			$items = array_merge($items, $open_file);
 
 		} elseif ($input == 'F') {
 			// remove item from beginning of $items array
